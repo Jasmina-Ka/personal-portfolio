@@ -1,207 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jasmina | Portfolio</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+  <meta charset="UTF-8">
+  <title>Jasmina Portfolio</title>
 
+  <style>
     body {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #f8fafc;
-      line-height: 1.6;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      color: white;
+      text-align: center;
     }
 
     .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: 0 auto;
+      padding: 50px 20px;
     }
 
-    header {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem 0;
-    }
-
-    .hero {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 3rem 2rem;
-      border-radius: 20px;
+    .card {
+      background: #1e293b;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 800px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      backdrop-filter: blur(8px);
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    img.profile {
+      width: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      color: #cbd5e1;
-      margin-bottom: 1.5rem;
+    h1 {
+      font-size: 2.5em;
     }
 
-    .btn {
-      display: inline-block;
+    button {
       background: #38bdf8;
-      color: #0f172a;
-      padding: 0.9rem 1.4rem;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
       transition: 0.3s;
     }
 
-    .btn:hover {
-      background: #0ea5e9;
-      transform: translateY(-2px);
+    button:hover {
+      background: #1f6feb;
+      transform: scale(1.05);
     }
 
-    section {
-      padding: 4rem 0;
+    .skills span {
+      display: inline-block;
+      background: #2563eb;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 20px;
     }
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .about, .skills, .projects, .contact {
-      background: rgba(255, 255, 255, 0.04);
-      padding: 2rem;
-      border-radius: 16px;
-      margin-bottom: 2rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    }
-
-    .skills-list {
+    .projects {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      list-style: none;
     }
 
-    .skills-list li {
-      background: #1d4ed8;
-      padding: 0.7rem 1rem;
-      border-radius: 999px;
+    .project {
+      background: #334155;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 10px;
+      width: 220px;
     }
 
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: rgba(255, 255, 255, 0.06);
-      padding: 1.5rem;
-      border-radius: 14px;
-      transition: 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    }
-
-    .project-card h3 {
-      margin-bottom: 0.8rem;
-    }
-
-    .contact p {
-      text-align: center;
-      margin-bottom: 0.7rem;
+    a {
+      color: #38bdf8;
+      text-decoration: none;
     }
 
     footer {
-      text-align: center;
-      padding: 2rem 0;
-      color: #cbd5e1;
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
+      margin-top: 30px;
+      opacity: 0.7;
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container">
-      <div class="hero">
-        <h1>Hi, I'm Jasmina 👋</h1>
-        <p>First-year IT student learning programming, GitHub, and building my first real projects.</p>
-        <a href="#projects" class="btn">See My Projects</a>
-      </div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="card">
+    <img class="profile" src="https://i.imgur.com/6VBx3io.png" alt="profile">
+
+    <h1>Hi, I'm Jasmina 👋</h1>
+    <p>First-year IT student learning programming, GitHub, and building my first real projects.</p>
+
+    <a href="#projects">
+      <button>See My Projects</button>
+    </a>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="card">
+    <h2>About Me</h2>
+    <p>
+      I'm Jasmina, a first-year IT student at OsloMet.  
+      I'm currently learning HTML, CSS, Java, databases, and GitHub.  
+      I enjoy coffee ☕, books 📚, and building my skills step by step.
+    </p>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="card">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>Java</span>
+      <span>Databases</span>
+      <span>GitHub</span>
     </div>
-  </header>
+  </div>
 
-  <main class="container">
-    <section id="about" class="about">
-      <h2>About Me</h2>
-      <p>
-        I'm Jasmina, a first-year IT student at OsloMet. I'm currently learning HTML, CSS, Java,
-        databases, and GitHub. I enjoy coffee, books, and building my skills step by step.
-      </p>
-    </section>
+  <!-- PROJECTS -->
+  <div class="card">
+    <h2 id="projects">My Projects</h2>
 
-    <section id="skills" class="skills">
-      <h2>Skills</h2>
-      <ul class="skills-list">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>Java</li>
-        <li>Databases</li>
-        <li>GitHub</li>
-      </ul>
-    </section>
+    <div class="projects">
 
-    <section id="projects" class="projects">
-      <h2>My Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Personal Website</h3>
-          <p>My first portfolio website built with HTML and CSS.</p>
-        </div>
-        <div class="project-card">
-          <h3>Java Practice Projects</h3>
-          <p>Small Java exercises and beginner practice tasks.</p>
-        </div>
-        <div class="project-card">
-          <h3>Database Assignments</h3>
-          <p>Course tasks related to databases and SQL learning.</p>
-        </div>
+      <div class="project">
+        <h3>Personal Website</h3>
+        <p>My first portfolio website built with HTML and CSS.</p>
       </div>
-    </section>
 
-    <section id="contact" class="contact">
-      <h2>Contact</h2>
-      <p>Email: your-email@example.com</p>
-      <p>GitHub: Jasmina-Ka</p>
-    </section>
-  </main>
+      <div class="project">
+        <h3>Java Practice</h3>
+        <p>Small Java exercises and beginner projects.</p>
+      </div>
+
+      <div class="project">
+        <h3>Database Tasks</h3>
+        <p>SQL and database assignments from university.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Email: available on request</p>
+    <p>
+      GitHub: 
+      <a href="https://github.com/Jasmina-Ka" target="_blank">
+        Jasmina-Ka
+      </a>
+    </p>
+  </div>
 
   <footer>
     <p>© 2026 Jasmina. Built with HTML & CSS.</p>
   </footer>
+
+</div>
+
 </body>
 </html>
