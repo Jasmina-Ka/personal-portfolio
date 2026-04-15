@@ -1,193 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Jasmina Portfolio</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jasmina | Portfolio</title>
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg-1: #0f172a;
+      --bg-2: #1e293b;
+      --card: rgba(30, 41, 59, 0.88);
+      --card-2: rgba(51, 65, 85, 0.95);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-dark: #0ea5e9;
+      --pill: #2563eb;
+      --border: rgba(148, 163, 184, 0.15);
+      --shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #0f172a, #1e293b);
-      color: white;
-      text-align: center;
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
     }
 
-    .container {
-      padding: 50px 20px;
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .card {
-      background: #1e293b;
-      margin: 20px auto;
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 800px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .profile {
-      width: 120px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      border: 3px solid #38bdf8;
-      box-shadow: 0 0 20px #38bdf8;
-    }
-
-    h1 {
-      font-size: 2.5em;
-    }
-
-    button {
-      background: #38bdf8;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #1f6feb;
-      transform: scale(1.05);
-    }
-
-    .skills span {
-      display: inline-block;
-      background: #2563eb;
-      padding: 8px 15px;
-      margin: 5px;
-      border-radius: 20px;
-    }
-
-    .projects {
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
     }
 
-    .project {
-      background: #334155;
-      padding: 20px;
-      margin: 10px;
-      border-radius: 10px;
-      width: 220px;
-    }
-
-    iframe {
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-
-    a {
-      color: #38bdf8;
+    .brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
       text-decoration: none;
     }
 
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 34px 28px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 90px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card {
+      text-align: center;
+      width: 100%;
+      padding: 42px 28px;
+    }
+
+    .profile {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 26px rgba(56, 189, 248, 0.6);
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: 3rem;
+      line-height: 1.1;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 2rem;
+    }
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .subtitle {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+
+    .hero-pills,
+    .skills-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0 28px;
+    }
+
+    .pill {
+      background: var(--pill);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #082f49;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 13px 24px;
+      border-radius: 12px;
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .about-text,
+    .contact-text,
+    .cv-list,
+    .youtube-text {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .project-card {
+      background: var(--card-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 20px;
+      transition: 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .project-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .cv-list {
+      margin: 0;
+      padding-left: 18px;
+      text-align: left;
+    }
+
+    .cv-list li {
+      margin-bottom: 10px;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    iframe {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      border-radius: 16px;
+      margin-top: 18px;
+      background: #0b1220;
+    }
+
     footer {
-      margin-top: 30px;
-      opacity: 0.7;
+      text-align: center;
+      color: var(--muted);
+      opacity: 0.9;
+      padding-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .projects-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
+
+      h2 {
+        font-size: 1.7rem;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .card,
+      .hero-card {
+        padding: 24px 18px;
+      }
+
+      .profile {
+        width: 120px;
+        height: 120px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 0.98rem;
+      }
+
+      iframe {
+        height: 240px;
+      }
     }
   </style>
 </head>
-
 <body>
-
-<div class="container">
-
-  <!-- HERO -->
-  <div class="card">
-    <img class="profile" src="https://avatars.githubusercontent.com/u/228701094?v=4" alt="profile">
-
-    <h1>Hi, I'm Jasmina 👋</h1>
-    <p>First-year IT student learning programming, GitHub, and building my first real projects.</p>
-
-    <a href="#projects">
-      <button>See My Projects</button>
-    </a>
-  </div>
-
-  <!-- ABOUT -->
-  <div class="card">
-    <h2>About Me</h2>
-    <p>
-      I'm Jasmina, a first-year IT student at OsloMet.  
-      I'm currently learning HTML, CSS, Java, databases, and GitHub.  
-      I enjoy coffee ☕, books 📚, and building my skills step by step.
-    </p>
-  </div>
-
-  <!-- SKILLS -->
-  <div class="card">
-    <h2>Skills</h2>
-    <div class="skills">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>Java</span>
-      <span>Databases</span>
-      <span>GitHub</span>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="#home">Jasmina Portfolio</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#cv">Mini CV</a>
+        <a href="#youtube">YouTube</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-  </div>
+  </nav>
 
-  <!-- PROJECTS -->
-  <div class="card">
-    <h2 id="projects">My Projects</h2>
+  <main class="container">
+    <section id="home" class="hero">
+      <div class="card hero-card">
+        <img
+          class="profile"
+          src="https://avatars.githubusercontent.com/u/228701094?v=4"
+          alt="Jasmina profile photo"
+        />
 
-    <div class="projects">
+        <h1>Hi, I'm Jasmina 👋</h1>
+        <p class="subtitle">
+          First-year IT student learning programming, GitHub, and building my first real projects.
+        </p>
 
-      <div class="project">
-        <h3>Personal Website</h3>
-        <p>My first portfolio website built with HTML and CSS.</p>
+        <div class="hero-pills">
+          <span class="pill">Future Developer</span>
+          <span class="pill">OsloMet Student</span>
+          <span class="pill">Coffee & Books</span>
+        </div>
+
+        <a class="btn" href="#projects">See My Projects</a>
       </div>
+    </section>
 
-      <div class="project">
-        <h3>Java Practice</h3>
-        <p>Small Java exercises and beginner projects.</p>
+    <section id="about">
+      <div class="card">
+        <h2>About Me</h2>
+        <p class="about-text">
+          I'm Jasmina, a first-year IT student at OsloMet. I'm currently learning HTML, CSS, Java, databases, and GitHub. I enjoy coffee ☕, books 📚, and building my skills step by step. My goal is to create strong foundations, work on real projects, and grow into a confident junior developer.
+        </p>
       </div>
+    </section>
 
-      <div class="project">
-        <h3>Database Tasks</h3>
-        <p>SQL and database assignments from university.</p>
+    <section id="skills">
+      <div class="card">
+        <h2>Skills</h2>
+        <div class="skills-list">
+          <span class="pill">HTML</span>
+          <span class="pill">CSS</span>
+          <span class="pill">Java</span>
+          <span class="pill">Databases</span>
+          <span class="pill">GitHub</span>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </div>
+    <section id="projects">
+      <div class="card">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Personal Website</h3>
+            <p>My first portfolio website built with HTML and CSS and published with GitHub Pages.</p>
+          </div>
 
-  <!-- YOUTUBE -->
-  <div class="card">
-    <h2>My YouTube</h2>
+          <div class="project-card">
+            <h3>Java Practice Projects</h3>
+            <p>Small Java exercises and beginner practice tasks used to improve my programming basics.</p>
+          </div>
 
-    <!-- OVDJE STAVI SVOJ VIDEO -->
-    <iframe 
-      width="100%" 
-      height="400" 
-      src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-      title="YouTube video player"
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
-  </div>
+          <div class="project-card">
+            <h3>Database Assignments</h3>
+            <p>University tasks related to SQL, databases, and structured problem solving.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- CONTACT -->
-  <div class="card">
-    <h2>Contact</h2>
-    <p>Email: jakar1073@oslomet.no</p>
-    <p>
-      GitHub: 
-      <a href="https://github.com/Jasmina-Ka" target="_blank">
-        Jasmina-Ka
-      </a>
-    </p>
-  </div>
+    <section id="cv">
+      <div class="mini-grid">
+        <div class="card">
+          <h2>Mini CV</h2>
+          <ul class="cv-list">
+            <li><strong>Education:</strong> First-year IT student at OsloMet</li>
+            <li><strong>Currently learning:</strong> HTML, CSS, Java, databases, Git & GitHub</li>
+            <li><strong>Focus:</strong> Building small projects and improving fundamentals</li>
+            <li><strong>Goal:</strong> Become job-ready through real practice</li>
+          </ul>
+        </div>
 
-  <footer>
-    <p>© 2026 Jasmina. Built with HTML & CSS.</p>
-  </footer>
+        <div class="card">
+          <h2>Strengths</h2>
+          <ul class="cv-list">
+            <li>Consistent learning and curiosity</li>
+            <li>Strong motivation to improve</li>
+            <li>Willingness to build and publish projects</li>
+            <li>Interest in web development and software growth</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <section id="youtube">
+      <div class="card">
+        <h2>My YouTube</h2>
+        <p class="youtube-text">
+          Here you can place your channel or a featured video.
+        </p>
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
 
+    <section id="contact">
+      <div class="card">
+        <h2>Contact</h2>
+        <div class="contact-text contact-links">
+          <p>Email: available on request</p>
+          <p>GitHub: <a href="https://github.com/Jasmina-Ka" target="_blank">Jasmina-Ka</a></p>
+          <p>Live portfolio: <a href="https://jasmina-ka.github.io/personal-portfolio/" target="_blank">Open website</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Jasmina. Built with HTML & CSS.</p>
+    </footer>
+  </main>
 </body>
 </html>
